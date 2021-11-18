@@ -1,0 +1,12 @@
+[programs.localnet]
+charmtoken = "D4gZCnjamagp3VRQMZm3s2uhp3FM6UXPnMVk8ARpMoNk"
+
+[registry]
+url = "https://anchor.projectserum.com"
+
+[provider]
+cluster = "mainnet"
+wallet = "/home/ubuntu/.config/solana/id.json"
+
+[scripts]
+test = "mocha -t 1000000 tests/"

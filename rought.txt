@@ -1,0 +1,36 @@
+
+ let _metadata_infos = vec![
+            ctx.accounts.metadata_account.clone(),
+            ctx.accounts.metadata_program.clone(),
+            ctx.accounts.mint.clone(),
+            ctx.accounts.mint_authority.clone(),
+            ctx.accounts.payer.clone(),
+            ctx.accounts.system_program.to_account_info(),
+            ctx.accounts.rent_program.to_account_info(),
+            ctx.accounts.token_program.to_account_info(),
+        ];
+        msg!("Making metadata instruction");
+              
+
+let instruction = create_metadata_accounts(
+            *ctx.accounts.metadata_program.key,
+            *ctx.accounts.metadata_account.key,
+            *ctx.accounts.mint.key,
+            *ctx.accounts.mint_authority.key,
+            *ctx.accounts.payer.key,
+            *ctx.accounts.payer.key,
+            name.to_string(),
+            symbol.to_string(),
+            url.to_string(),
+            None,
+            //Default creator royality.. will be changed to client
+            0,
+            //At the moment defaulting to update authority as signer as well... will be changed to client
+            true,
+            true,
+        );
+        msg!("Calling the metadata program to make metadata...");
+        invoke(&instruction, metadata_infos.as_slice())?;
+
+        
+        msg!("Metadata created");  
